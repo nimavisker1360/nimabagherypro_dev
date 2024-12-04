@@ -1,5 +1,5 @@
 const Home = () => (
-  <h1 className="text-3xl font-black text-violet-700">
+  <h1 className="text-3xl font-black text-primary">
     Welcome to the World Next.js
   </h1>
 );
