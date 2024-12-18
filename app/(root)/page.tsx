@@ -6,7 +6,7 @@ const Home = async () => {
 
   return (
     <>
-      <h1 className="h1-bold">Welcome to the World Next.js (Inter)</h1>
+      <h1 className="h1-bold">Welcome to the World Next.js</h1>
       <form className="px-10 pt-[100px]"></form>
     </>
   );
