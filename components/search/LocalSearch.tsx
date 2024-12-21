@@ -24,13 +24,14 @@ const LocalSearch = ({ route, imgSrc, placeholder, otherClasses }: Props) => {
   const [searchQuery, setSearchQuery] = useState(query);
 
   useEffect(() => {
-    const dellayDebounceFn = setTimeout(() => {
+    const delayDebounceFn = setTimeout(() => {
       if (searchQuery) {
         const newUrl = formUrlQuery({
           params: searchParams.toString(),
           key: "query",
           value: searchQuery,
         });
+
         router.push(newUrl, { scroll: false });
       } else {
         if (pathname === route) {
@@ -38,17 +39,18 @@ const LocalSearch = ({ route, imgSrc, placeholder, otherClasses }: Props) => {
             params: searchParams.toString(),
             keysToRemove: ["query"],
           });
+
           router.push(newUrl, { scroll: false });
         }
       }
     }, 300);
 
-    return () => clearTimeout(dellayDebounceFn);
-  }, [searchQuery, router, route, searchParams]);
+    return () => clearTimeout(delayDebounceFn);
+  }, [searchQuery, router, route, searchParams, pathname]);
+
   return (
     <div
-      className={`background-light800_darkgradient flex min-h-[56px] grow items-center
-    gap-4 rounded-[10px] px-4 ${otherClasses}`}
+      className={`background-light800_darkgradient flex min-h-[56px] grow items-center gap-4 rounded-[10px] px-4 ${otherClasses}`}
     >
       <Image
         src={imgSrc}
@@ -57,13 +59,13 @@ const LocalSearch = ({ route, imgSrc, placeholder, otherClasses }: Props) => {
         alt="Search"
         className="cursor-pointer"
       />
+
       <Input
         type="text"
         placeholder={placeholder}
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
-        className="paragraph-regular no-focus
-        text-dark400_light700 border-none shadow-none outline-none"
+        className="paragraph-regular no-focus placeholder text-dark400_light700 border-none shadow-none outline-none"
       />
     </div>
   );
