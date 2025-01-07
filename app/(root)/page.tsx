@@ -6,7 +6,7 @@ import LocalSearch from "@/components/search/LocalSearch";
 import { Button } from "@/components/ui/button";
 import ROUTES from "@/constants/routes";
 import handleError from "@/lib/handlers/error";
-import dbConnect from "@/lib/mongoose";
+import { ValidationError } from "@/lib/http-errors";
 
 const questions = [
   {
@@ -51,7 +51,10 @@ const questions = [
 
 const test = async () => {
   try {
-    await dbConnect();
+    throw new ValidationError({
+      title: ["Required"],
+      tags: ['"JavaScript" is not a valid tag.'],
+    });
   } catch (error) {
     return handleError(error);
   }
