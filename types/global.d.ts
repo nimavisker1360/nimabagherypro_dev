@@ -1,9 +1,8 @@
-import { NextResponse } from "next/server";
-
 interface Tag {
   _id: string;
   name: string;
 }
+
 interface Author {
   _id: string;
   name: string;
@@ -15,11 +14,11 @@ interface Question {
   title: string;
   tags: Tag[];
   author: Author;
-  createAd: Date;
-  upvote: number;
+  createdAt: Date;
+  upvotes: number;
   answers: number;
   views: number;
-  createAd: Date;
+  createdAt: Date;
 }
 
 type ActionResponse<T = null> = {
